@@ -1,0 +1,2 @@
+# trading_assistant_backend
+trading_assistant_backend
