@@ -6,7 +6,7 @@ The platform allows the user to enter, view, and manage the information required
 
 The project is developed incrementally in phases.
 
----
+<br> <br>
 
 ## Project Structure
 
@@ -19,7 +19,7 @@ This document defines **what the application should do** and what should be deli
 
 It does not define how the application should be implemented.
 
----
+<br> <br>
 
 ## Development
 
@@ -43,7 +43,7 @@ The Frontend technology and framework will be defined separately.
 - Authentication is not required.
 - Automated tests are not required.
 
----
+<br> <br>
 
 # Phase 1 — Data Entry and Management
 
