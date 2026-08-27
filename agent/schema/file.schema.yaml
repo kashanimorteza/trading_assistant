@@ -1,0 +1,44 @@
+schema:
+  id: agent-interface-file
+  version: "1.0"
+
+structure:
+  - meta
+  - policy
+  - read_order
+  - content_map
+  - content
+
+sections:
+
+  # <!--------------------------------------------------------------------------------- Meta -->
+  meta:
+      required: true
+      fields:
+        path:
+          required: true
+          purpose: "The path of the file."
+
+        path_note:
+          required: true
+          purpose: "Explains the location, layer, and role of the file."
+          
+  # <!--------------------------------------------------------------------------------- Policy -->
+  policy:
+    required: true
+    purpose: "Rules and policy for reading, interpreting, and modifying the file."
+
+  # <!--------------------------------------------------------------------------------- Read_Order -->
+  read_order:
+    required: true
+    purpose: "The order the content sections are read in, and why."
+
+  # <!--------------------------------------------------------------------------------- Content_Map -->
+  content_map:
+    required: true
+    purpose: "Semantic map of the content and the responsibility of each content item."
+
+  # <!--------------------------------------------------------------------------------- Content -->
+  content:
+    required: true
+    purpose: "Actual file content."
