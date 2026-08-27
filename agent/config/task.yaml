@@ -46,7 +46,7 @@ content_map:
   task_schema: "The fields every task carries"
   task_states: "The status vocabulary a task's status field may hold, and the protocols around it"
   phase_titles: "Quick lookup from phase id to its title — the stages the Phase 1 backend build follows, in build order"
-  phases: "The plans — empty; api-v1 is still a draft, so no task may be defined against it, and per policy.task_creation a plan is written only on explicit request"
+  phases: "The plans — an empty mapping; api-v1 is still a draft, so no task may be defined against it, and per policy.task_creation a plan is written only on explicit request"
 
 
 # <!--------------------------------------------------------------------------------- Content -->
@@ -102,4 +102,4 @@ content:
     P14: "Conformance"
 
 
-  phases: []
+  phases: {}

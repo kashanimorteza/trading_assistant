@@ -51,7 +51,7 @@ content:
 
     - id: "B1"
       blocks: "The whole backend plan — not one task can be written, because a task may only be defined against a frozen contract"
-      what_is_missing: "A frozen api-v1. Phase 1 settles the operations — add, list, read one, edit and update, delete, enable and disable — but fixes no type or permitted value for Strategy's Risk Parameter, Execute's Profit, or Execute's State, and does not say how an Account's password is held at rest"
+      what_is_missing: "A frozen api-v1. Phase 1 settles the operations — add, list, read one, edit and update, delete, enable and disable — but fixes no type or permitted value for Strategy's Risk Parameter, Execute's Profit, or Execute's State, does not say how an Account's password is held at rest, and does not say what deleting a record that another record points at must do"
       consequence: "The six records can be described but none of them can be built — every backend task stays unwritten"
       decision_belongs_to: "human"
       raised: "2026-08-27"
@@ -94,12 +94,18 @@ content:
         blocks: "B2"
 
       - id: "Q6"
-        question: "rules.yaml requires one design page per interface file, and the interface files have moved — they now live in agent/config/, with backend.yaml and frontend.yaml each carrying their own shape. rules.yaml is human-owned"
-        why_it_matters: "The design rule asks for pages that do not match the files that exist — the rule may not be corrected by an agent"
+        question: "rules.yaml requires one design page in design/file.drawio per interface file, but no design file exists and the interface files have moved — they now live in agent/config/. Should the pages be brought up to the current files, should the design rules be dropped from Phase 1, or should they stand as they are?"
+        why_it_matters: "The design rule asks for pages that do not match the files that exist, and neither the rule nor the design file may be corrected by an agent — rules.yaml is human-owned"
         answered_so_far: "On 2026-08-27 the interface was regenerated from the rewritten Phase 1 of project.md into agent/config/, with the design rules kept exactly as they stand — what remains open is only that the pages in design/file.drawio have not caught up with the current files"
         blocks: "nothing yet"
 
       - id: "Q7"
-        question: "schema/frontend.schema.yaml is the backend's shape with the word frontend swapped in — its contracts section offers produces, rule, change_rule, and a version entry, but no field for a contract this item consumes, and its tech section asks a client for an ORM, a migrations framework, and a database. Is that intended, or should the frontend have a shape of its own?"
-        why_it_matters: "The frontend is a consumer, not a producer. frontend.yaml carries consumes and contract_location so it can name the contract it reads, and those two keys have no place in the shape. A schema file is human-owned and may not be corrected by an agent"
+        question: "schema/frontend.schema.yaml is the backend's shape with the word frontend swapped in — its contracts section requires produces and a <version> entry carrying lifecycle, consumed_by, conventions, error_shape, models, and routes, offers no field for a contract this item consumes, and its tech section asks a client for an ORM, a migrations framework, and a database. Is that intended, or should the frontend have a shape of its own?"
+        why_it_matters: "The frontend is a consumer, not a producer. Two things follow in frontend.yaml: it carries consumes and contract_location so it can name the contract it reads, and those two keys have no place in the shape; and it writes no <version> entry, which the shape marks required, because a version entry would be a contract this item does not publish and an agent does not invent one. Both are deviations from the shape, and a schema file is human-owned and may not be corrected by an agent"
         blocks: "nothing yet"
+
+      - id: "Q8"
+        question: "Phase 1 asks for delete on every record, and an action points at an asset, a strategy, and an action group while an execute entry points at an action. What must happen when a record that another record points at is deleted — is the delete refused while a reference exists, are the records that point at it deleted with it, or is the reference cleared and left empty?"
+        why_it_matters: "The rules require every foreign key of an action or an execute entry to point at a row that exists, and six delete routes are named without an answer for the referenced case; the delete surface, the database constraints, and the migration that creates them all follow from it, so api-v1 cannot be frozen while it is open"
+        blocks: "B1"
+

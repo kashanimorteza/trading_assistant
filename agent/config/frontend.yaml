@@ -8,7 +8,7 @@ meta:
   plan_location: "This item's plan lives in task.yaml — never here"
   in_phase_but_undefined: "Phase 1 requires a working frontend, so the item is enabled — but Phase 1 states that its technology and framework are defined separately, so every technical setting below stands as to be defined"
   contract_gap: "No task for this item can be written until the human names its technology — recorded as B2 and Q5 in state.yaml"
-  shape_gap: "schema/frontend.schema.yaml gives a consuming item no field for the contract it reads, so consumes and contract_location are written here beside the shape — raised as Q7 in state.yaml, never fixed by an agent"
+  shape_gap: "schema/frontend.schema.yaml is written for a producing item: it requires a <version> entry under contracts carrying lifecycle, consumed_by, conventions, error_shape, models, and routes, and it offers no field for a contract this item reads. This item produces no contract, so no <version> entry is written — inventing one would be a contract this item does not publish — and consumes and contract_location are written beside the shape instead. Both deviations are raised as Q7 in state.yaml and are never fixed by an agent"
   updated: "2026-08-27"
 
 
